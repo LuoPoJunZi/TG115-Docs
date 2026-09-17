@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eff7ff"/><stop offset="1" stop-color="#f8fbff"/></linearGradient>
+  <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1597ff"/><stop offset="1" stop-color="#1769e0"/></linearGradient>
+</defs>
+<rect width="1440" height="900" rx="34" fill="url(#bg)"/>
+<rect x="40" y="40" width="1360" height="820" rx="26" fill="#ffffff" stroke="#c7ddf4" stroke-width="3"/>
+<rect x="40" y="40" width="1360" height="86" rx="26" fill="url(#bar)"/>
+<circle cx="92" cy="83" r="12" fill="#ffffff" opacity=".92"/><circle cx="128" cy="83" r="12" fill="#ffffff" opacity=".62"/><circle cx="164" cy="83" r="12" fill="#ffffff" opacity=".38"/>
+<text x="720" y="90" text-anchor="middle" font-family="Arial, Microsoft YaHei, sans-serif" font-size="30" font-weight="700" fill="#ffffff">TG115 文档截图占位</text>
+<rect x="190" y="225" width="1060" height="410" rx="30" fill="#f6faff" stroke="#8fc4f2" stroke-width="4" stroke-dasharray="18 14"/>
+<text x="720" y="390" text-anchor="middle" font-family="Arial, Microsoft YaHei, sans-serif" font-size="44" font-weight="700" fill="#145dab">部署完成与健康检查</text>
+<text x="720" y="455" text-anchor="middle" font-family="Arial, Microsoft YaHei, sans-serif" font-size="27" fill="#5c7894">展示基础环境部署成功后的状态信息</text>
+<text x="720" y="505" text-anchor="middle" font-family="Arial, Microsoft YaHei, sans-serif" font-size="23" fill="#7e96ad">发布前将同名占位图替换为真实截图即可</text>
+<rect x="505" y="555" width="430" height="56" rx="28" fill="#e7f3ff"/>
+<text x="720" y="592" text-anchor="middle" font-family="Arial, Microsoft YaHei, sans-serif" font-size="20" font-weight="700" fill="#1769e0">建议宽度 ≥ 1440 px · 隐去所有敏感信息</text>
+</svg>
