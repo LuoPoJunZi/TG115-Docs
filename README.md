@@ -11,7 +11,7 @@ TG115 独立项目文档站，基于 VitePress 构建。
 - v1.6.2 版本下拉；
 - GitHub Releases 下载入口；
 - 完整“从零部署”教程；
-- 部署器截图占位与替换规范；
+- 部署器 4 个核心页面 UI 预览图；
 - 分类 FAQ；
 - v1.6.2 更新日志；
 - Cloudflare Pages 部署说明；
@@ -45,4 +45,13 @@ Build output directory: docs/.vitepress/dist
 
 正式绑定自定义域名后，可按需在 VitePress 配置中加入 sitemap hostname。
 
+## 界面预览
 
+`docs/public/images/` 已包含 4 张来自 TG115 交互式 UI 设计稿的界面预览：
+
+- `deployer-vps.png`
+- `deployer-telegram.png`
+- `deployer-clouddrive.png`
+- `deployer-options.png`
+
+这些图片不包含真实 VPS、Telegram 或 WebDAV 凭据。它们用于展示当前部署器的界面设计与操作分区，并非原生 Qt 实机运行截图。

@@ -49,24 +49,27 @@ docs/.vitepress/dist
 
 ## 新版本发布时要改哪里
 
-假设未来发布 `v1.6.0`：
+假设未来发布 `v1.7.0`：
 
 1. `.vitepress/config.mts`：更新顶部版本下拉；
 2. `docs/index.md`：更新首页稳定版与下载按钮文案；
 3. `docs/download/index.md`：更新部署器文件名；
-4. `docs/reference/changelog.md`：新增 `v1.6.0` 章节；
+4. `docs/reference/changelog.md`：新增 `v1.7.0` 章节；
 5. `docs/deployment/from-zero.md`：检查安装步骤、参数和截图；
 6. 如果部署器 UI 发生变化，重新制作截图。
 
-## 替换部署器截图
+## 部署器界面预览
 
-当前占位图位于：
+当前文档站已经内置 4 张 1440 × 900 PNG 界面预览：
 
 ```text
-docs/public/images/
+docs/public/images/deployer-vps.png
+docs/public/images/deployer-telegram.png
+docs/public/images/deployer-clouddrive.png
+docs/public/images/deployer-options.png
 ```
 
-正式截图建议使用 PNG，宽度至少 1440px，并先遮挡所有敏感信息。
+它们由 `TG115_UI_Preview.html` 生成，不包含真实凭据。若未来改用原生 Qt 实机截图，建议保持相近尺寸，并在发布前遮挡所有敏感信息。
 
 ## Logo
 

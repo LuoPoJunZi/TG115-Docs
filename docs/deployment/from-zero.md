@@ -86,9 +86,9 @@ TG115-Deployer-v1.6.2.exe
 
 部署器主界面将集中填写 VPS、Telegram 和 CloudDrive2 WebDAV 信息。
 
-![TG115 部署器主界面截图位置](/images/deployer-main.svg)
+![TG115 部署器 VPS 配置界面预览](/images/deployer-vps.png)
 
-> 发布正式文档时，可将此占位图替换为真实部署器截图。截图前必须遮挡 VPS IP、密码、Bot Token、API Hash、WebDAV 密码等信息。
+> 上图来自 TG115 交互式 UI 设计稿，用于展示页面布局。正式原生 Qt 程序的字体和控件细节可能略有差异。
 
 ## 5. 填写 VPS 信息并测试 SSH
 
@@ -110,7 +110,6 @@ TG115-Deployer-v1.6.2.exe
 
 首次连接 VPS 时部署器会显示 SSH 主机密钥指纹。应与 VPS 服务商控制台或你可信渠道获取的指纹核对，一致后再确认连接。
 
-![SSH 主机指纹确认截图位置](/images/ssh-fingerprint.svg)
 
 ## 6. 填写 Telegram 信息
 
@@ -124,6 +123,8 @@ Telegram API Hash
 ```
 
 这些信息用于 Bot 接收文件、Telegram MTProto 下载以及限制允许使用 Bot 的用户。
+
+![Telegram 配置界面预览](/images/deployer-telegram.png)
 
 ## 7. 配置 CloudDrive2 WebDAV
 
@@ -149,6 +150,8 @@ http://clouddrive2:19798/dav
 
 那么 TG115 的子目录应当**留空**。否则再次填写 `115/Telegram` 可能形成重复嵌套路径。
 
+![CloudDrive2 / 115 配置界面预览](/images/deployer-clouddrive.png)
+
 ::: warning 不要把 19798 暴露公网
 部署器管理 CloudDrive2 时，Bot 使用 Docker 容器内网访问 `clouddrive2:19798`。CloudDrive2 管理页面应通过 SSH 隧道打开，不需要直接暴露公网端口。
 :::
@@ -165,6 +168,8 @@ http://clouddrive2:19798/dav
 ```
 
 其中 20GB 是 TG115 普通落盘任务的预算，并不代表 CloudDrive2 内部缓存也严格限制为 20GB。
+
+![部署选项与存储建议界面预览](/images/deployer-options.png)
 
 ## 9. 一键部署基础环境
 
@@ -189,7 +194,6 @@ http://clouddrive2:19798/dav
 
 通常需要约 **5～15 分钟**，具体取决于 VPS 网络和镜像下载速度。
 
-![部署成功与健康检查截图位置](/images/deployment-success.svg)
 
 部署过程中不要关闭部署器。
 
@@ -209,7 +213,6 @@ http://127.0.0.1:随机端口
 
 这个地址只通过当前 SSH 隧道访问，不是直接暴露给公网的管理地址。
 
-![CloudDrive2 SSH 隧道管理页截图位置](/images/clouddrive2-tunnel.svg)
 
 ## 11. 在 CloudDrive2 中挂载 115
 

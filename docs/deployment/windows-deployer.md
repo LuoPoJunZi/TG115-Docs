@@ -28,11 +28,15 @@ TG115 的推荐部署方式是在 Windows 10/11 64 位电脑上运行图形化�
 - 开启并配置 WebDAV；
 - 最终在 115 官方客户端确认文件完整性。
 
-## 主界面截图
+## 界面预览
 
-![部署器主界面截图位置](/images/deployer-main.svg)
+![TG115 VPS 配置界面预览](/images/deployer-vps.png)
 
-截图替换规范见 [部署器截图说明](/deployment/screenshots)。
+完整的 VPS、Telegram、CloudDrive2 / 115 与部署选项四个页面，请查看 [部署器界面预览](/deployment/screenshots)。
+
+::: info 说明
+这些图片来自 TG115 的交互式 UI 设计稿，用于展示当前界面结构，并非原生 Qt 实机运行截图。
+:::
 
 ## VPS 信息
 
