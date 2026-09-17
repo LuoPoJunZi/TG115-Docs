@@ -45,6 +45,4 @@ Build output directory: docs/.vitepress/dist
 
 正式绑定自定义域名后，可按需在 VitePress 配置中加入 sitemap hostname。
 
-## 截图
 
-`docs/public/images/` 中目前为安全占位图。正式发布前可以替换为真实部署器截图，但必须先遮挡所有敏感信息。
