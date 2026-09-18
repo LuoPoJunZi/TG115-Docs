@@ -40,7 +40,7 @@ features:
     details: 仅允许配置的 Telegram 数字 ID 使用；CloudDrive2 管理页通过 SSH 隧道访问。
   - icon: ✅
     title: 明确的完成状态
-    details: 区分“Bot 已完成 WebDAV 写入”和“115 官方端已由用户确认”，避免误判完成状态。
+    details: “Bot 完成”只代表 CloudDrive2 已接收并通过大小复验；115 官方端仍由用户按需核验。
 ---
 
 <div class="tg115-release-card">
@@ -77,5 +77,7 @@ features:
 4. [FAQ](/faq/) —— 遇到排队、SSH、FUSE、WebDAV 等问题时快速定位。
 
 ::: warning 使用前请注意
-TG115 是个人自托管工具。不要在 Issue、截图、群聊或公开页面中暴露 VPS 密码、SSH 私钥、Bot Token、Telegram API Hash、WebDAV 密码等敏感信息。
+TG115 是个人自托管工具。请只转存你有权保存和使用的内容，并遵守相关平台条款与所在地法律法规。不要在 Issue、截图、群聊或公开页面中暴露 VPS 密码、SSH 私钥、Bot Token、Telegram API Hash、WebDAV 密码等敏感信息。
 :::
+
+TG115 当前不自动监听频道，也不批量抓取频道历史。本项目是在 [whyhhh20/TG115](https://github.com/whyhhh20/TG115) 基础上的二次开发版本，详见 [项目介绍](/guide/introduction)。

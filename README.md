@@ -11,10 +11,10 @@ TG115 独立项目文档站，基于 VitePress 构建。
 - v1.6.2 版本下拉；
 - GitHub Releases 下载入口；
 - 完整“从零部署”教程；
-- 部署器 4 个核心页面 UI 预览图；
+- Modern 部署器 4 个核心页面离线预览图；
 - 分类 FAQ；
 - v1.6.2 更新日志；
-- Cloudflare Pages 部署说明；
+- Cloudflare Pages 构建配置；
 - 本地中文搜索、深浅色模式、页面目录、最后更新时间和编辑链接。
 
 ## 本地运行
@@ -43,7 +43,7 @@ Build command: npm run docs:build
 Build output directory: docs/.vitepress/dist
 ```
 
-正式绑定自定义域名后，可按需在 VitePress 配置中加入 sitemap hostname。
+当前站点使用 `https://tg115.pages.dev` 作为 sitemap hostname。绑定自定义域名后，应同步修改 VitePress 配置中的站点地址、Open Graph 地址与 sitemap hostname。
 
 ## 界面预览
 
@@ -54,4 +54,4 @@ Build output directory: docs/.vitepress/dist
 - `deployer-clouddrive.png`
 - `deployer-options.png`
 
-这些图片不包含真实 VPS、Telegram 或 WebDAV 凭据。它们用于展示当前部署器的界面设计与操作分区，并非原生 Qt 实机运行截图。
+这些图片由主项目 PySide6 Modern 部署器的离线预览模式生成，不包含真实 VPS、Telegram 或 WebDAV 凭据，也不会执行远程操作。它们用于展示当前界面结构；实际系统字体和控件渲染可能略有差异。

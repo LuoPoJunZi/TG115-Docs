@@ -5,7 +5,7 @@
 <div class="tg115-download-panel">
   <div>
     <strong>TG115 v1.6.2</strong>
-    <p>Windows 图形化一键部署器 + 完整项目源代码。</p>
+    <p>Modern / Classic Windows 部署器 + 完整项目源代码。</p>
   </div>
   <a class="tg115-btn primary" href="https://github.com/LuoPoJunZi/TG115/releases/latest" target="_blank" rel="noreferrer">前往 GitHub Releases 下载</a>
 </div>
@@ -18,22 +18,28 @@
 
 不要从来历不明的网盘、聊天附件或二次打包站点下载部署器。
 
-## v1.6.2 部署器
+## v1.6.2 发布文件
 
-当前文档使用的文件名：
+推荐下载：
 
 ```text
-TG115-Deployer-v1.6.2.exe
+TG115-Deployer-Modern-v1.6.2.exe
 ```
 
-下载后应同时获取 `SHA256SUMS.txt` 并校验。
+Modern 使用 PySide6 新界面，是默认推荐版本。低配置电脑或偏好原 Tkinter 界面时，可以下载：
+
+```text
+TG115-Deployer-Classic-v1.6.2.exe
+```
+
+Classic 是轻量兼容版，不承诺同步后续界面功能。完整公开源码文件为 `TG115-Source-v1.6.2.zip`。下载后应同时获取 `SHA256SUMS.txt` 并校验。
 
 ## Windows 校验命令
 
 PowerShell：
 
 ```powershell
-Get-FileHash .\TG115-Deployer-v1.6.2.exe -Algorithm SHA256
+Get-FileHash .\TG115-Deployer-Modern-v1.6.2.exe -Algorithm SHA256
 ```
 
 将输出哈希与 Release 中的 `SHA256SUMS.txt` 核对一致后再运行。

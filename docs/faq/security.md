@@ -34,11 +34,11 @@ CloudDrive2 是第三方闭源软件，并且 FUSE 挂载需要较高容器权�
 从项目正式 GitHub Releases 下载，并使用：
 
 ```powershell
-Get-FileHash .\TG115-Deployer-v1.6.2.exe -Algorithm SHA256
+Get-FileHash .\TG115-Deployer-Modern-v1.6.2.exe -Algorithm SHA256
 ```
 
 与 Release 中的 `SHA256SUMS.txt` 逐项核对。
 
-## `/confirm` 会修改 115 中的文件吗
+## 旧版 `/confirm` 会修改 115 中的文件吗
 
-不会。`/confirm` 只把某个任务记录为“115 官方端已由你确认”，不会重新上传、移动或删除文件。
+不会。兼容命令 `/confirm` 只更新 Bot 的历史任务记录，不会重新上传、移动或删除文件，当前日常流程也不再要求使用它。

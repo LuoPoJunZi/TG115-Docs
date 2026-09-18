@@ -1,6 +1,6 @@
 # FAQ：部署与连接
 
-## VPS 没有 `/dev/fuse`
+## 受管 CloudDrive2 所在 VPS 没有 `/dev/fuse`
 
 CloudDrive2 官方 Docker 挂载方式依赖 FUSE。请：
 
@@ -8,7 +8,7 @@ CloudDrive2 官方 Docker 挂载方式依赖 FUSE。请：
 2. 查看服务商控制台是否有“FUSE / TUN / 容器权限”开关；
 3. 如果是容器型 VPS，联系服务商确认宿主机是否允许 FUSE。
 
-如果服务商完全不支持 `/dev/fuse`，当前推荐部署方式无法正常使用 CloudDrive2 挂载。
+如果服务商完全不支持 `/dev/fuse`，就不能在该 VPS 上使用部署器管理的 CloudDrive2 挂载。连接另一台服务器上已有的外部 CloudDrive2 时，Bot 所在 VPS 不会因为 TG115 本身而强制要求 FUSE。
 
 ## SSH 连接失败
 
@@ -58,11 +58,13 @@ TG115 部署器使用 PyInstaller 生成单文件 EXE，未签商业代码签名
 打开 CloudDrive2 管理页
 ```
 
-它会建立隧道并打开类似：
+它会建立隧道并打开：
 
 ```text
-http://127.0.0.1:随机端口
+http://127.0.0.1:19798
 ```
+
+如果本机端口 `19798` 已被其他程序或旧隧道占用，先释放该端口，再重新点击管理页入口。
 
 ## 修改配置后为什么验收还是旧配置
 

@@ -1,6 +1,11 @@
 # Windows 一键部署器
 
-TG115 的推荐部署方式是在 Windows 10/11 64 位电脑上运行图形化部署器，由它通过 SSH 完成 VPS 侧安装。
+TG115 的推荐部署方式是在 Windows 10/11 64 位电脑上运行 Modern 图形化部署器，由它通过 SSH 完成 VPS 侧安装。v1.6.2 同时提供：
+
+- `TG115-Deployer-Modern-v1.6.2.exe`：PySide6 新界面，推荐使用；
+- `TG115-Deployer-Classic-v1.6.2.exe`：原 Tkinter 界面的轻量兼容版。
+
+两种版本使用同一套 VPS payload 和配置语义；新界面功能优先在 Modern 版维护。
 
 如果你是第一次部署，请优先阅读 **[从零部署完整教程](/deployment/from-zero)**。
 
@@ -35,7 +40,7 @@ TG115 的推荐部署方式是在 Windows 10/11 64 位电脑上运行图形化�
 完整的 VPS、Telegram、CloudDrive2 / 115 与部署选项四个页面，请查看 [部署器界面预览](/deployment/screenshots)。
 
 ::: info 说明
-这些图片来自 TG115 的交互式 UI 设计稿，用于展示当前界面结构，并非原生 Qt 实机运行截图。
+这些图片由 Modern 部署器自身的离线预览模式生成，不连接 VPS，也不执行远程操作。实际系统字体、缩放和控件渲染可能略有差异。
 :::
 
 ## VPS 信息
@@ -69,7 +74,7 @@ http://clouddrive2:19798/dav
 
 不需要把 19798 端口暴露到公网。
 
-## 推荐默认值
+## 默认值与实例建议
 
 ```text
 安装目录：/opt/tg115
@@ -78,7 +83,9 @@ http://clouddrive2:19798/dav
 时区：Asia/Shanghai
 ```
 
-这些值适合基础个人使用；CloudDrive2 可能额外产生缓存，因此磁盘容量较小时应保留更大的实际安全余量。
+这些是源码默认值，不代表适合每一台 VPS。先点击“测试 SSH”或“检测 VPS 并推荐”，再根据结果主动应用“均衡模式”或“流式优先”建议。部署器不会静默修改输入框，正式部署前还会重新检查安装盘、Docker 数据盘、inode、FUSE 和已有下载占用。
+
+CloudDrive2 可能额外产生缓存，因此磁盘容量较小时应保留更大的实际安全余量。由部署器管理 CloudDrive2 时需要 `/dev/fuse`；使用外部 CloudDrive2 时不强制要求 Bot VPS 提供 FUSE。
 
 ## 部署完成后
 
@@ -89,4 +96,5 @@ http://clouddrive2:19798/dav
 3. 开启 WebDAV；
 4. 点击“WebDAV 验收（写入测试文件）”；
 5. 确认出现 `TG115_DESTINATION=OK`；
-6. 用一个 5～20MB 文件进行第一次真实转存。
+6. 用一个 5～20MB 文件进行第一次真实转存；
+7. 看到“Bot 传输已完成（CloudDrive2 已接收）”后，在 115 官方客户端核验文件。

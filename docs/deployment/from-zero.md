@@ -10,7 +10,7 @@
 
 | 项目 | 推荐配置 | 说明 |
 | --- | --- | --- |
-| VPS | 2 核 / 4GB / 50GB SSD | Ubuntu 22.04/24.04 或 Debian 12 64 位 |
+| VPS | 2 核 / 4GB / 50GB SSD | Ubuntu 22.04/24.04 或 Debian 12，支持 x86_64 与 ARM64 |
 | VPS 网络 | 100Mbps 或以上 | 需稳定访问 Telegram 与 Docker 镜像仓库 |
 | CloudDrive2 | 可用会员环境 | 需要 115 挂载与 WebDAV 功能可用 |
 | 115 | 可正常登录且空间充足 | 由你本人在 CloudDrive2 中完成登录/挂载 |
@@ -19,9 +19,9 @@
 
 大量或长期批量传输，建议升级到 **4 核 / 8GB / 80～100GB SSD**。
 
-### VPS 必须支持 `/dev/fuse`
+### 受管 CloudDrive2 需要 `/dev/fuse`
 
-CloudDrive2 的容器挂载方式依赖 FUSE。如果 VPS 没有 `/dev/fuse`，需要在服务商控制面板开启，或者联系服务商确认是否支持。
+如果选择让部署器在同一台 VPS 上安装和管理 CloudDrive2，容器挂载需要 FUSE。VPS 没有 `/dev/fuse` 时，请在服务商控制面板开启，或联系服务商确认是否支持。若连接的是外部已有 CloudDrive2，则 Bot 所在 VPS 不因此强制要求 FUSE。
 
 ## 2. 下载 TG115 部署器
 
@@ -29,18 +29,19 @@ CloudDrive2 的容器挂载方式依赖 FUSE。如果 VPS 没有 `/dev/fuse`，�
 
 **[下载最新 TG115 Release](https://github.com/LuoPoJunZi/TG115/releases/latest)**
 
-当前稳定版文档对应 `v1.6.2`，发布包中的主要文件包括：
+当前稳定版文档对应 `v1.6.2`，Release 中的主要文件包括：
 
-- `TG115-Deployer-v1.6.2.exe`：Windows 图形化部署器；
+- `TG115-Deployer-Modern-v1.6.2.exe`：推荐使用的 PySide6 现代界面部署器；
+- `TG115-Deployer-Classic-v1.6.2.exe`：兼容性优先的 Tkinter 经典界面部署器；
+- `TG115-Source-v1.6.2.zip`：项目源码包；
 - `SHA256SUMS.txt`：发布文件 SHA-256 校验值；
-- 项目源代码与相关说明文件。
 
 ### 校验 SHA-256
 
 在 PowerShell 中进入下载目录后执行：
 
 ```powershell
-Get-FileHash .\TG115-Deployer-v1.6.2.exe -Algorithm SHA256
+Get-FileHash .\TG115-Deployer-Modern-v1.6.2.exe -Algorithm SHA256
 ```
 
 将结果与 `SHA256SUMS.txt` 中对应值核对。
@@ -81,14 +82,14 @@ Bot Token、API Hash 与 VPS 登录凭据都属于敏感信息。截图文档、
 双击：
 
 ```text
-TG115-Deployer-v1.6.2.exe
+TG115-Deployer-Modern-v1.6.2.exe
 ```
 
 部署器主界面将集中填写 VPS、Telegram 和 CloudDrive2 WebDAV 信息。
 
 ![TG115 部署器 VPS 配置界面预览](/images/deployer-vps.png)
 
-> 上图来自 TG115 交互式 UI 设计稿，用于展示页面布局。正式原生 Qt 程序的字体和控件细节可能略有差异。
+> 上图由 v1.6.2 PySide6 Modern 部署器的离线预览模式生成，用于展示页面布局；实际运行时会根据系统字体、缩放比例和环境检测结果略有差异。
 
 ## 5. 填写 VPS 信息并测试 SSH
 
@@ -156,9 +157,9 @@ http://clouddrive2:19798/dav
 部署器管理 CloudDrive2 时，Bot 使用 Docker 容器内网访问 `clouddrive2:19798`。CloudDrive2 管理页面应通过 SSH 隧道打开，不需要直接暴露公网端口。
 :::
 
-## 8. 保持推荐参数
+## 8. 检测 VPS 并应用实例建议
 
-首次部署建议保持：
+部署器字段的初始值为：
 
 ```text
 安装目录：/opt/tg115
@@ -167,7 +168,9 @@ http://clouddrive2:19798/dav
 时区：Asia/Shanghai
 ```
 
-其中 20GB 是 TG115 普通落盘任务的预算，并不代表 CloudDrive2 内部缓存也严格限制为 20GB。
+这组 `20GB / 20GB` 是程序默认值，并非适合所有 VPS 的固定推荐。首次部署应先执行 VPS 检测，再按实例情况应用“均衡模式”或“流式优先”等建议。检测结果不会在未确认时静默覆盖配置，正式部署前还会再次检查磁盘条件。
+
+本地任务预算只约束 TG115 的普通落盘任务，不代表 CloudDrive2 内部缓存也受到同一限制。若小磁盘实例无法满足默认值，请按检测建议调低预算、释放磁盘空间或扩容。
 
 ![部署选项与存储建议界面预览](/images/deployer-options.png)
 
@@ -205,13 +208,13 @@ http://clouddrive2:19798/dav
 打开 CloudDrive2 管理页
 ```
 
-部署器会建立 SSH 安全隧道，并在浏览器打开类似：
+部署器会建立 SSH 安全隧道，并在浏览器打开：
 
 ```text
-http://127.0.0.1:随机端口
+http://127.0.0.1:19798
 ```
 
-这个地址只通过当前 SSH 隧道访问，不是直接暴露给公网的管理地址。
+这个地址只通过当前 SSH 隧道访问，不是直接暴露给公网的管理地址。若本机 `19798` 已被占用，先停止占用程序或旧隧道，再重新打开管理页。
 
 
 ## 11. 在 CloudDrive2 中挂载 115
@@ -266,19 +269,10 @@ WebDAV 验收通过证明文件已经成功写入 CloudDrive2 WebDAV，但不能
 2. 转发到你与 TG115 Bot 的一对一私聊；
 3. Bot 返回任务编号；
 4. 等待任务从“在排队”进入下载/流式与写入状态；
-5. Bot 显示“Bot 传输已完成，115 官方端待确认”；
-6. 在 115 官方客户端确认文件大小正常并可打开；
-7. 向 Bot 发送：
+5. Bot 显示“Bot 传输已完成（CloudDrive2 已接收）”；
+6. 在 115 官方客户端确认文件大小正常并可打开。
 
-```text
-/confirm <任务编号>
-```
-
-任务状态将记录为：
-
-```text
-115 官方端已由你确认
-```
+当前日常流程不再要求逐任务发送 `/confirm`。旧版本保留的 `/confirm <任务编号|all>` 仍可用于兼容既有操作习惯，但不会改变 CloudDrive2 与 115 官方端的真实同步结果。
 
 ## 14. 日常使用
 
@@ -288,8 +282,8 @@ WebDAV 验收通过证明文件已经成功写入 CloudDrive2 WebDAV，但不能
 Telegram 文件
 → 转发给私人 Bot
 → TG115 自动排队与传输
+→ Bot 报告 CloudDrive2 已接收
 → 115 官方客户端核验
-→ /confirm <任务编号>
 ```
 
 常用命令：
@@ -301,8 +295,13 @@ Telegram 文件
 /status
 /performance
 /task <任务编号>
-/confirm <任务编号>
-/retry <任务编号>
+/watch
+/pause
+/resume
+/doctor
+/stream
+/orphans
+/retry <任务编号|all>
 /cancel <任务编号>
 ```
 

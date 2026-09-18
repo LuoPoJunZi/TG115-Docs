@@ -8,6 +8,9 @@ export default defineConfig({
   title: 'TG115',
   titleTemplate: ':title · TG115 Docs',
   description: 'TG115 — Telegram → CloudDrive2 / 115 自托管文件转存工具文档',
+  sitemap: {
+    hostname: 'https://tg115.pages.dev'
+  },
   cleanUrls: true,
   lastUpdated: true,
   head: [
@@ -17,7 +20,8 @@ export default defineConfig({
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: 'TG115 Docs' }],
     ['meta', { property: 'og:description', content: 'Telegram → 115 自托管文件转存工具完整文档' }],
-    ['meta', { property: 'og:image', content: '/tg115-logo.png' }]
+    ['meta', { property: 'og:url', content: 'https://tg115.pages.dev/' }],
+    ['meta', { property: 'og:image', content: 'https://tg115.pages.dev/tg115-logo.png' }]
   ],
   themeConfig: {
     logo: '/tg115-mark.png',
@@ -97,15 +101,8 @@ export default defineConfig({
         items: [
           { text: '配置字段', link: '/reference/config' },
           { text: '目录与文件', link: '/reference/paths' },
+          { text: '工作原理', link: '/reference/architecture' },
           { text: '更新日志', link: '/reference/changelog' }
-        ]
-      },
-      {
-        text: '文档维护',
-        items: [
-          { text: '项目架构', link: '/developer/architecture' },
-          { text: '文档站维护', link: '/developer/docs-site' },
-          { text: 'Cloudflare Pages 部署', link: '/developer/cloudflare-pages' }
         ]
       }
     ],

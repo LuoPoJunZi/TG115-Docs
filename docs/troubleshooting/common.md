@@ -4,12 +4,12 @@
 
 | 问题 | 优先查看 |
 | --- | --- |
-| VPS 没有 `/dev/fuse` | [部署与连接 FAQ](/faq/deployment) |
+| 受管 CloudDrive2 所在 VPS 没有 `/dev/fuse` | [部署与连接 FAQ](/faq/deployment) |
 | SSH 连接失败 | [部署与连接 FAQ](/faq/deployment) |
 | `lookup clouddrive2` | [部署与连接 FAQ](/faq/deployment) |
 | Bot 一直“在排队” | [传输与任务 FAQ](/faq/transfer) |
 | 单文件超过 20GB | [传输与任务 FAQ](/faq/transfer) |
-| 115 已看到文件但仍待确认 | [传输与任务 FAQ](/faq/transfer) |
+| Bot 完成后如何确认 115 状态 | [传输与任务 FAQ](/faq/transfer) |
 | Windows 安全软件提示 | [部署与连接 FAQ](/faq/deployment) |
 | 敏感凭据如何保护 | [安全与隐私 FAQ](/faq/security) |
 
